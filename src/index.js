@@ -29,7 +29,7 @@ import MovieQuoteService from './js/moviequote-service';
 //     nextQuestion();
 //   }
 // }
-function generateDynamicQuestion() {
+function generateRandomQuote() {
   $('#question').show();
 
   const randomAnswerIndex = Math.floor(Math.random() * 4) + 1;
@@ -41,10 +41,30 @@ function generateDynamicQuestion() {
       .then(function (response) {
 
         if (i === randomAnswerIndex) {
-          $('#quoteText').text(response.content);
+          $('#quoteText').text(`Who is talking in the quote?" ${response.content} "`);
         }
 
         $('#choice' + i + ' > label').text(response.author);
+      });
+  }
+}
+
+function generateMovieQuote() {
+  $('#question').show();
+
+  const randomAnswerIndex = Math.floor(Math.random() * 4) + 1;
+
+  console.log(randomAnswerIndex);
+
+  for (let i = 1; i < 5; i++) {
+    MovieQuoteService.getMovieQuote()
+      .then(function (response) {
+
+        if (i === randomAnswerIndex) {
+          $('#quoteText').text(`Who is talking in the quote?" ${response.quote}" `);
+        }
+
+        $('#choice' + i + ' > label').text(`${response.role} from "${response.show}"`);
       });
   }
 }
@@ -85,26 +105,28 @@ $(document).ready(function () {
 
 
   $('#randomQuote').click(function () {
-    $('#submitAnswer').show();
+    $('#submitRandomAnswer').show();
+    $('#submitMovieAnswer').hide();
     $('#randomQuote').hide();
-
-    generateDynamicQuestion();
+    $('#movieQuote').hide();
+    generateRandomQuote();
   });
 
-  $('#submitAnswer').click(function () {
-    generateDynamicQuestion();
-  })
+  $('#submitRandomAnswer').click(function () {
+    generateRandomQuote();
+  });
 
   $('#movieQuote').click(function () {
-    $('#submitAnswer').show();
-    $('#question1').show();
+    $('#submitMovieAnswer').show();
+    $('#submitRandomAnswer').hide();
+    $('#randomQuote').hide();
     $('#movieQuote').hide();
 
-    MovieQuoteService.getMovieQuote()
-      .then(function (response) {
-        $('#quoteText1').text(response.quote);
-        $('#correctAnswer1').text(`${response.role} from "${response.show}"`);
-      });
+    generateMovieQuote();
+  });
+
+  $('#submitMovieAnswer').click(function () {
+    generateMovieQuote();
   });
 
   // loopThroughQuestions();

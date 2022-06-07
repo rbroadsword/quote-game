@@ -1,9 +1,15 @@
-#randomQuote, #movieQuote {
+#randomQuote, #movieQuote, .submit  {
   margin-top: 50px;
-  width: 100px;
-  height: 40px;
+  width: fit-content;
+  height: auto;
   border-radius: 12px;
   transition-duration: 0.4s;
+  padding: 10px 20px;
+}
+
+#movieQuote:hover {
+  background-color: indigo;
+  color: white;
 }
 
 #randomQuote:hover {
@@ -11,7 +17,7 @@
   color: white;
 }
 
-#movieQuote:hover {
+.submit:hover {
   background-color: indigo;
   color: white;
 }
@@ -46,4 +52,9 @@ input {
 
 #submitAnswer {
   display: none;
+}
+.container {
+  text-align: center; 
+  padding: 50px;
+  margin: auto;
 }

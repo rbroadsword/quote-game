@@ -41,7 +41,7 @@ function generateRandomQuote() {
       .then(function (response) {
 
         if (i === randomAnswerIndex) {
-          $('#quoteText').text(`Who is talking in the quote?" ${response.content} "`);
+          $('#quoteText').text(`Who is talking in the quote? "${response.content}"`);
         }
 
         $('#choice' + i + ' > label').text(response.author);
@@ -61,7 +61,7 @@ function generateMovieQuote() {
       .then(function (response) {
 
         if (i === randomAnswerIndex) {
-          $('#quoteText').text(`Who is talking in the quote?" ${response.quote}" `);
+          $('#quoteText').text(`Who is talking in the quote? "${response.quote}"`);
         }
 
         $('#choice' + i + ' > label').text(`${response.role} from "${response.show}"`);

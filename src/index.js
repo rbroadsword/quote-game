@@ -34,17 +34,18 @@ function generateDynamicQuestion() {
 
   const randomAnswerIndex = Math.floor(Math.random() * 4) + 1;
 
+  console.log(randomAnswerIndex);
+
   for (let i = 1; i < 5; i++) {
     QuoteService.getQuote()
       .then(function (response) {
 
         if (i === randomAnswerIndex) {
-          $('#quoteText').text(response.content)
+          $('#quoteText').text(response.content);
         }
 
         $('#choice' + i + ' > label').text(response.author);
       });
-    console.log(randomAnswerIndex);
   }
 }
 
@@ -85,15 +86,14 @@ $(document).ready(function () {
 
   $('#randomQuote').click(function () {
     $('#submitAnswer').show();
-    $('#question1').show();
     $('#randomQuote').hide();
 
-    QuoteService.getQuote()
-      .then(function (response) {
-        $('#quoteText1').text(response.content);
-        $('#correctAnswer1').text(response.author);
-      });
+    generateDynamicQuestion();
   });
+
+  $('#submitAnswer').click(function () {
+    generateDynamicQuestion();
+  })
 
   $('#movieQuote').click(function () {
     $('#submitAnswer').show();
@@ -107,5 +107,7 @@ $(document).ready(function () {
       });
   });
 
-  loopThroughQuestions();
+  // loopThroughQuestions();
+
+
 }); 

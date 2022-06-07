@@ -1,4 +1,4 @@
-#startGame {
+#randomQuote, #movieQuote {
   margin-top: 50px;
   width: 100px;
   height: 40px;
@@ -6,7 +6,12 @@
   transition-duration: 0.4s;
 }
 
-#startGame:hover {
+#randomQuote:hover {
+  background-color: indigo;
+  color: white;
+}
+
+#movieQuote:hover {
   background-color: indigo;
   color: white;
 }

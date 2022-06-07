@@ -1,32 +1,36 @@
-# Application Name
+# Quotes game
 
-#### By: Ryan Broadsword
+#### By: Ryan Broadsword, Nick Tse, Louie Knolle, Viktroiia Zubarieva
 
-#### {brief description of the application}
+## Description 
+ {This project is a quiz which called a "Quote game". A user can answer the question by checking the checkboxes. In the end user can see how well he/she goes through the quiz and how many answers were right. }
 
 ## Technologies Used
 
 * HTML
 * CSS 
-* Jquery
+* JQuery
 * Bootstrap
-* Java Script
+* JavaScript
+* npm
+* webpack
+* eslint
+* git
 
-
-## Description 
-
-{This is a detailed description of your application. Give as much detail as needed to explain what the app does as well as any other info you want users/developers to have}
 
 ## Setup/Installation Requirements
 
-* clone repository
-* open in vs code
-* open terminal
-* in terminal run "npm i"
-* in terminal run "npm run build"
-* in terminal run "npm run start"
-* in termianl run "npm test"
+* Clone this repository to your desktop
+* Navigate to the top level of the directory
+* 
+* 
+* Name your API key variable API_KEY in .env
 
+* Install project dependencies by running the command npm install
+* After installing npm, run the command npm run build
+* Then run the command npm run start to start the project server and view the    application (use cmd + c to exit the server in the terminal)
+* Open the project with the code editor of your choice
+* 
 ## Known Bugs
 
 * _Any known issues_
@@ -34,6 +38,4 @@
 
 ## License
 
-_{Let people know what to do if they run into any issues or have questions, ideas or concerns.  Encourage them to contact you or make a contribution to the code.}_
-
-Copyright (c) _date_ _author name(s)_
+Copyright (c) _June_ _Ryan Broadsword, Nick Tse, Louie Knolle, Viktroiia Zubarieva_

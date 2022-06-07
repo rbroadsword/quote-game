@@ -17,4 +17,13 @@ export default class Game {
     return this.rightAnswer += 1;
   }
 
+  topPlayers() {
+    if (this.totalPoints > this.leaderboard.first)
+  }
+
+
+
+
+
+
 }

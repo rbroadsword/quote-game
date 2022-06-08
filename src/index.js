@@ -19,9 +19,14 @@ function generateRandomQuote(newGame, randomAnswerIndex) {
     QuoteService.getQuote()
       .then(function (response) {
         if (i === randomAnswerIndex) {
-          $('#quoteText').html(`<span class="quote-question">Who is talking in the quote?</span><span class="quote-text">"${response.content}"</span>`);
+          $('#quoteText').html(`<span class="card-body">
+    <h1 class="card-title">Who is talking in the quote?</h1></span><span class="card-text">"${response.content}"</span>`);
+          // $('#quoteText').html(`<span class="quote-question">Who is talking in the quote?</span><span class="quote-text">"${response.content}"</span>`);
         }
-        $('#choice' + i + ' > label').text(response.author);
+        // $('#choice' + i + ' > label').append(`<div class="progress">
+        // <div class="progress-bar" role="progressbar" style="width: ${response.author}" aria-valuenow="1" aria-valuemin="0" aria-valuemax="10"></div>
+        // `);
+        $('#choice' + i + ' > label').html(`<h3>${response.author}<h3>`);
       });
   }
 }
@@ -44,9 +49,11 @@ function generateMovieQuote() {
     MovieQuoteService.getMovieQuote()
       .then(function (response) {
         if (i === randomAnswerIndex) {
-          $('#quoteText').html(`<span class="quote-question">Who is talking in the quote?</span> <span class="quote-text">"${response.quote}"</span>`);
+
+          $('#quoteText').html(`<span class="card-body">
+          <h1 class="card-title">Who is talking in the quote?</h1></span><span class="card-text"><h2>"${response.quote}"</h2></span>`);
         }
-        $('#choice' + i + ' > label').text(`${response.role} from "${response.show}"`);
+        $('#choice' + i + ' > label').text(`<h3>${response.role} from "${response.show}"</h3>`);
       });
   }
 }
@@ -63,6 +70,10 @@ $(document).ready(function () {
     generateRandomQuote(newGame, answerID);
     $('#submitRandomAnswer').click(function () {
       checkAnswer(answerID, newGame);
+
+      $('.progress').html(`<div class="progress-bar" role="progressbar" 
+        style="width: ${newGame.turnCount / 5 * 100}%;" aria-valuenow="${newGame.turnCount}" aria-valuemin="0" aria-valuemax="5"></div>
+      `);
       answerID = answerIndex();
       if (newGame.turnCount < 5) {
         newGame.turnCount += 1;

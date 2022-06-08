@@ -6,6 +6,12 @@
   transition-duration: 0.4s;
   padding: 10px 20px;
 }
+.title {
+  font-size: 4rem;
+}
+.submit {
+  margin-bottom: 4rem;
+}
 
 #movieQuote:hover {
   background-color: indigo;
@@ -68,4 +74,45 @@ input {
 .quote-text {
   font-size: x-large;
   color: wheat;
+}
+
+.questionBlock {
+  background-color: midnightblue;
+  border-radius: .25rem;
+  opacity: 75%;
+  width: 40rem; 
+  height: 10rem;
+  display: flex; 
+  margin-bottom: 3rem; 
+}
+.border {
+  border: 0.2rem solid #fff;
+  border-radius: 2rem;
+  padding: 0.4em;
+  box-shadow: 0 0 .2rem #fff,
+              0 0 .2rem #fff,
+              0 0 2rem  #AAF0D1,
+              0 0 0.8rem #AAF0D1,
+              0 0 2.8rem #AAF0D1,
+              inset 0 0 1.3rem #AAF0D1;
+}
+
+.neonText {
+  color: #fff;
+  text-shadow:
+    0 0 21px #fff,
+    0 0 42px #AAF0D1,
+    0 0 82px #AAF0D1,
+    0 0 92px #AAF0D1,
+    0 0 102px #AAF0D1,
+    0 0 120px #AAF0D1;
+}
+
+.quote {
+  margin: auto;
+  justify-content: center;
+}
+
+label {
+  font-size: 1.5rem;
 }

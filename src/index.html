@@ -10,14 +10,16 @@
 
 <body>
   <div class="container">
-    <h1>Quotes Game</h1>
+    <h1 class="neonText title">Quotes Game</h1>
   </div>
 
-  <button type="click" id="randomQuote">Random quotes</button>
-  <button type="click" id="movieQuote">Movie quotes</button>
+  <button type="click" id="randomQuote" class="btn-lg">Random quotes</button>
+  <button type="click" id="movieQuote" class="btn-lg">Movie quotes</button>
   <br>
   <div class="question" id="question">
-    <span class="quote" id="quoteText"></span>
+    <div class="questionBlock border">
+      <span class="quote" id="quoteText"></span>
+    </div>
     <div id="choice1">
       <input type="radio" value="choice1" name="answers" id="ans1">
       <label for="ans1"></label>
@@ -34,8 +36,8 @@
       <input type="radio" value="choice4" name="answers" id="ans4">
       <label for="ans4"></label>
     </div>
-    <button class="submit" id="submitRandomAnswer">Submit answer</button>
-    <button class="submit" id="submitMovieAnswer">Submit answer</button>
+    <button class="submit btn-lg" id="submitRandomAnswer">Submit answer</button>
+    <button class="submit btn-lg" id="submitMovieAnswer">Submit answer</button>
   </div>
   <div >
     <h1 class="displayScore"></h1class=>

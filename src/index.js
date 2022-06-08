@@ -5,47 +5,43 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import QuoteService from './js/quote-service.js';
 import MovieQuoteService from './js/moviequote-service';
-// import Game from './game.js';
+import Game from './game.js';
 
-// function getQuestion1(response) {
-//   if (response instanceof Error === false) {
-//     console.log(response);
-//     $('.quote').text(`Who is talking in the quote?"
-//     ${response.content}"`);
-//     $('.answer').text(`${response.author}`);
-//     $('.wrongAnswer1').text(`Wrong Person1`);
-//     $('.wrongAnswer2').text(`Wrong Person2`);
-//   }
-// }
-
-// function nextQuestion() { }
-
-// function CheckAnswer() {
-//   const game = new Game('', '');
-//   if ($('.answer').click() === true) {
-//     game.score();
-//     nextQuestion();
-//   } else {
-//     nextQuestion();
-//   }
-// }
-function generateRandomQuote() {
-  $('#question').show();
-
+function answerIndex() {
   const randomAnswerIndex = Math.floor(Math.random() * 4) + 1;
 
-  console.log(randomAnswerIndex);
+  console.log("this is the right answer: " + randomAnswerIndex);
+  return randomAnswerIndex;
+}
+
+function generateRandomQuote(newGame, randomAnswerIndex) {
+  $('#question').show();
+  // const randomAnswerIndex = Math.floor(Math.random() * 4) + 1;
+
+  // console.log("this is the right answer: " + randomAnswerIndex);
 
   for (let i = 1; i < 5; i++) {
     QuoteService.getQuote()
       .then(function (response) {
 
         if (i === randomAnswerIndex) {
-          $('#quoteText').text(`Who is talking in the quote? "${response.content}"`);
+          $('#quoteText').html(`<span class="quote-question">Who is talking in the quote?</span><span class="quote-text">"${response.content}"</span>`);
         }
 
         $('#choice' + i + ' > label').text(response.author);
       });
+  }
+  // newGame.randomAnswerIndex = randomAnswerIndex;
+}
+
+function checkAnswer(choiceNumber, newGame) {
+  let ans = "ans";
+  if (document.getElementById(ans + choiceNumber).checked) {
+    newGame.score();
+    console.log("this is total score " + newGame.rightAnswer);
+    console.log("success");
+  } else {
+    console.log("fail");
   }
 }
 
@@ -61,59 +57,33 @@ function generateMovieQuote() {
       .then(function (response) {
 
         if (i === randomAnswerIndex) {
-          $('#quoteText').text(`Who is talking in the quote? "${response.quote}"`);
+          $('#quoteText').html(`<span class="quote-question">Who is talking in the quote?</span> <span class="quote-text">"${response.quote}"</span>`);
         }
 
         $('#choice' + i + ' > label').text(`${response.role} from "${response.show}"`);
       });
   }
 }
-
-
-// function loopThroughQuestions() {
-//   for (let i = 1; i < 10; i++) {
-//     let submitAnswer = '#submitAnswer' + i;
-//     let currentQuestion = '#question' + i;
-//     let nextQuestion = '#question' + (i + 1);
-//     let quoteText = '#quoteText' + (i + 1);
-//     let correctAnswer = '#correctAnswer' + (i + 1);
-
-//     $(submitAnswer).click(function () {
-//       $(currentQuestion).hide();
-//       $(nextQuestion).show();
-//       QuoteService.getQuote()
-//         .then(function (response) {
-//           $(quoteText).text(response.content)
-//           $(correctAnswer).text(response.author);
-//         });
-//     })
-//   }
-// }
-
 $(document).ready(function () {
-  //   $('#start').click(function() {
-  //     QuoteService.getQuote()
-  //       .then(function(response) {
-  //         getQuestion1(response); 
-  //       });
-  //       CheckAnswer(); 
-  //       console.log(`score is ${game.rightAnswer}`); 
-  //     }); 
-  //     console.log(`score is ${game.rightAnswer}`); 
-  //   });
-
-
+  let answerID = 0;
 
   $('#randomQuote').click(function () {
     $('#submitRandomAnswer').show();
     $('#submitMovieAnswer').hide();
     $('#randomQuote').hide();
     $('#movieQuote').hide();
-    generateRandomQuote();
-  });
+    let newGame = new Game("", "");
+    answerID = answerIndex();
+    generateRandomQuote(newGame, answerID);
 
-  $('#submitRandomAnswer').click(function () {
-    generateRandomQuote();
+    $('#submitRandomAnswer').click(function () {
+      checkAnswer(answerID, newGame);
+      answerID = answerIndex();
+      generateRandomQuote(newGame, answerID);
+      // TODO: get user answer
+      // compare user answer with correct answer
+      // change score
+    });
   });
 
   $('#movieQuote').click(function () {
@@ -128,8 +98,6 @@ $(document).ready(function () {
   $('#submitMovieAnswer').click(function () {
     generateMovieQuote();
   });
+});
 
-  // loopThroughQuestions();
 
-
-}); 

@@ -1,5 +1,4 @@
 //for business logic, constructors, and functions
-// https://api.quotable.io/random
 
 export default class QuoteService {
   static getQuote() {

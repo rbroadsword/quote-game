@@ -2,28 +2,20 @@ export default class Game {
   constructor(question, answer) {
     this.question = question;
     this.answer = answer;
+    this.randomAnswerIndex = 0;
     this.rightAnswer = 0;
-    this.questions = [{
-      text: 'who is president',
-      answers: ['trump', 'biden', 'clinton', 'obama'],
-      rightAnswer: 'biden',
-      userAnswer: ''
-    }];
 
+    this.correctAnswers = {}; // key-value pair storage, key - question text, value - correct answer
   }
 
   score() {
-    console.log('score function');
-    return this.rightAnswer += 1;
+    this.rightAnswer += 1;
+    console.log("total score: " + this.rightAnswer);
   }
 
   topPlayers() {
-    if (this.totalPoints > this.leaderboard.first)
+    if (this.totalPoints > this.leaderboard.first) {
+      // TODO: 
+    }
   }
-
-
-
-
-
-
 }

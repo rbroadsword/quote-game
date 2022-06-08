@@ -58,3 +58,14 @@ input {
   padding: 50px;
   margin: auto;
 }
+
+.quote-question {
+  font-size: large;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+}
+
+.quote-text {
+  font-size: x-large;
+  color: wheat;
+}

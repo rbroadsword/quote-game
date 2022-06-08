@@ -9,34 +9,25 @@ import Game from './game.js';
 
 function answerIndex() {
   const randomAnswerIndex = Math.floor(Math.random() * 4) + 1;
-
   console.log("this is the right answer: " + randomAnswerIndex);
   return randomAnswerIndex;
 }
 
 function generateRandomQuote(newGame, randomAnswerIndex) {
   $('#question').show();
-  // const randomAnswerIndex = Math.floor(Math.random() * 4) + 1;
-
-  // console.log("this is the right answer: " + randomAnswerIndex);
-
   for (let i = 1; i < 5; i++) {
     QuoteService.getQuote()
       .then(function (response) {
-
         if (i === randomAnswerIndex) {
           $('#quoteText').html(`<span class="quote-question">Who is talking in the quote?</span><span class="quote-text">"${response.content}"</span>`);
         }
-
         $('#choice' + i + ' > label').text(response.author);
       });
   }
-  // newGame.randomAnswerIndex = randomAnswerIndex;
 }
 
 function checkAnswer(choiceNumber, newGame) {
-  let ans = "ans";
-  if (document.getElementById(ans + choiceNumber).checked) {
+  if (document.getElementById("ans" + choiceNumber).checked) {
     newGame.score();
     console.log("this is total score " + newGame.rightAnswer);
     console.log("success");
@@ -47,26 +38,21 @@ function checkAnswer(choiceNumber, newGame) {
 
 function generateMovieQuote() {
   $('#question').show();
-
   const randomAnswerIndex = Math.floor(Math.random() * 4) + 1;
-
   console.log(randomAnswerIndex);
-
   for (let i = 1; i < 5; i++) {
     MovieQuoteService.getMovieQuote()
       .then(function (response) {
-
         if (i === randomAnswerIndex) {
           $('#quoteText').html(`<span class="quote-question">Who is talking in the quote?</span> <span class="quote-text">"${response.quote}"</span>`);
         }
-
         $('#choice' + i + ' > label').text(`${response.role} from "${response.show}"`);
       });
   }
 }
+
 $(document).ready(function () {
   let answerID = 0;
-
   $('#randomQuote').click(function () {
     $('#submitRandomAnswer').show();
     $('#submitMovieAnswer').hide();
@@ -75,28 +61,31 @@ $(document).ready(function () {
     let newGame = new Game("", "");
     answerID = answerIndex();
     generateRandomQuote(newGame, answerID);
-
     $('#submitRandomAnswer').click(function () {
       checkAnswer(answerID, newGame);
       answerID = answerIndex();
-      generateRandomQuote(newGame, answerID);
-      // TODO: get user answer
-      // compare user answer with correct answer
-      // change score
+      if (newGame.turnCount < 5) {
+        newGame.turnCount += 1;
+        generateRandomQuote(newGame, answerID);
+      } else {
+        $(".question").hide();
+        $(".displayScore").show();
+        $('.displayScore').text(`Your score is: ${newGame.rightAnswer}`);
+      }
     });
-  });
 
-  $('#movieQuote').click(function () {
-    $('#submitMovieAnswer').show();
-    $('#submitRandomAnswer').hide();
-    $('#randomQuote').hide();
-    $('#movieQuote').hide();
 
-    generateMovieQuote();
-  });
+    $('#movieQuote').click(function () {
+      $('#submitMovieAnswer').show();
+      $('#submitRandomAnswer').hide();
+      $('#randomQuote').hide();
+      $('#movieQuote').hide();
+      generateMovieQuote();
+    });
 
-  $('#submitMovieAnswer').click(function () {
-    generateMovieQuote();
+    $('#submitMovieAnswer').click(function () {
+      generateMovieQuote();
+    });
   });
 });
 

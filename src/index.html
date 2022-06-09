@@ -9,43 +9,44 @@
 </head>
 
 <body>
-
-  <span class="name" id="gameName">
-    <h1>Quotes Game</h1>
-  </span>
-  <!-- <h1>Quotes Game</h1> -->
-
-  <button type="click" id="randomQuote">Random quotes</button>
-  <button type="click" id="movieQuote">Movie quotes</button>
   <div class="container">
-    <div class="question" id="question">
-      <span class="quote" id="quoteText"></span>
-      <div id="choice1">
-        <input type="radio" value="choice1" name="answers" id="ans1">
-        <label for="ans1"></label>
-      </div>
-      <div id="choice2">
-        <input type="radio" value="choice3" name="answers" id="ans2">
-        <label for="ans2"></label>
-      </div>
-      <div id="choice3">
-        <input type="radio" value="choice3" name="answers" id="ans3">
-        <label for="ans3"></label>
-      </div>
-      <div id="choice4">
-        <input type="radio" value="choice4" name="answers" id="ans4">
-        <label for="ans4"></label>
-      </div>
-      <button class="submit" id="submitRandomAnswer">Submit answer</button>
-      <button class="submit" id="submitMovieAnswer">Submit answer</button>
-      <div class="progress mt-3" style="height: 20px;">
-        <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0"
-          aria-valuemax="5"></div>
-      </div>
+    <h1 class="neonText title">Quotes Game</h1>
+  </div>
+
+  <button type="click" id="randomQuote" class="btn-lg">Random quotes</button>
+  <button type="click" id="movieQuote" class="btn-lg">Movie quotes</button>
+  <br>
+  <div class="question" id="question">
+    <div class="questionBlock border">
+      <span class="quote quote-text" id="quoteText"></span>
+    </div>
+    <div id="choice1">
+      <input type="radio" value="choice1" name="answers" id="ans1" checked>
+      <label for="ans1"></label>
     </div>
     <div>
       <h1 class="displayScore"></h1>
     </div>
+    <div id="choice3">
+      <input type="radio" value="choice3" name="answers" id="ans3">
+      <label for="ans3"></label>
+    </div>
+    <div id="choice4">
+      <input type="radio" value="choice4" name="answers" id="ans4">
+      <label for="ans4"></label>
+    </div>
+
+    <button class="submit btn-lg" id="submitRandomAnswer">Submit answer</button>
+    <button class="submit btn-lg" id="submitMovieAnswer">Submit answer</button>
+    <div class="progress mt-3" style="height: 20px;">
+      <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0"
+        aria-valuemax="5"></div>
+    </div>
+
+  </div>
+  <div>
+    <h1 class="displayScore">
+      </h1class=>
   </div>
 </body>
 

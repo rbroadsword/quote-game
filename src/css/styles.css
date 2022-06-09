@@ -6,6 +6,12 @@
   transition-duration: 0.4s;
   padding: 10px 20px;
 }
+.title {
+  font-size: 4rem;
+}
+.submit {
+  margin-bottom: 1rem;
+}
 
 #movieQuote:hover {
   background-color: indigo;
@@ -61,7 +67,7 @@ input {
 
 .quote-question {
   font-size: large;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: white;
 }
 
@@ -70,7 +76,54 @@ input {
   font-weight: 400;
   font-size: 3.5em;
   color: wheat;
+  font-family: Vivaldi;
 }
+
+.questionBlock {
+  background-color: midnightblue;
+  border-radius: 0.25rem;
+  opacity: 75%;
+  width: 40rem;
+  height: fit-content;
+  display: flex;
+  margin-bottom: 3rem;
+  padding-bottom: 1rem;
+}
+.border {
+  border: 0.2rem solid #fff;
+  border-radius: 2rem;
+  padding: 0.4em;
+  box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #aaf0d1,
+    0 0 0.8rem #aaf0d1, 0 0 2.8rem #aaf0d1, inset 0 0 1.3rem #aaf0d1;
+}
+
+.neonText {
+  color: #fff;
+  text-shadow: 0 0 21px #fff, 0 0 42px #aaf0d1, 0 0 82px #aaf0d1,
+    0 0 92px #aaf0d1, 0 0 102px #aaf0d1, 0 0 120px #aaf0d1;
+}
+
+.quote {
+  margin: auto;
+  justify-content: center;
+}
+
+label {
+  font-size: 1.5rem;
+}
+
+/* .quote-question {
+  font-size: large;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+}
+
+.card-text {
+  font-family: Vivaldi;
+  font-weight: 400;
+  font-size: 3.5em;
+  color: wheat;
+} */
 .progress-bar {
-background-color: indigo;
+  background-color: indigo;
 }

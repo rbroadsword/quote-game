@@ -15,7 +15,7 @@ export default class Game {
 
   topPlayers() {
     if (this.totalPoints > this.leaderboard.first) {
-      // TODO: 
+      // TODO:
     }
   }
 }

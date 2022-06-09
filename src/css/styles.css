@@ -71,3 +71,6 @@ input {
   font-size: 3.5em;
   color: wheat;
 }
+.progress-bar {
+background-color: indigo;
+}

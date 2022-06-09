@@ -1,11 +1,12 @@
 //for UI logic
-import $ from 'jquery';
-import 'bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './css/styles.css';
-import QuoteService from './js/quote-service.js';
-import MovieQuoteService from './js/moviequote-service';
-import Game from './game.js';
+import $ from "jquery";
+import "bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./css/styles.css";
+import QuoteService from "./js/quote-service.js";
+import MovieQuoteService from "./js/moviequote-service";
+import Game from "./game.js";
+import Sounds from "./js/sounds.js";
 
 function answerIndex() {
   const randomAnswerIndex = Math.floor(Math.random() * 4) + 1;
@@ -14,21 +15,23 @@ function answerIndex() {
 }
 
 function generateRandomQuote(newGame, randomAnswerIndex) {
-  $('#question').show();
+  $("#question").show();
   for (let i = 1; i < 5; i++) {
-    QuoteService.getQuote()
-      .then(function (response) {
-        if (i === randomAnswerIndex) {
-          $('#quoteText').html(`<span class="quote-question">Who is talking in the quote?</span><span class="quote-text">"${response.content}"</span>`);
-        }
-        $('#choice' + i + ' > label').text(response.author);
-      });
+    QuoteService.getQuote().then(function (response) {
+      if (i === randomAnswerIndex) {
+        $("#quoteText").html(
+          `<span class="quote-question">Who is talking in the quote?</span><span class="quote-text">"${response.content}"</span>`
+        );
+      }
+      $("#choice" + i + " > label").text(response.author);
+    });
   }
 }
 
-function checkAnswer(choiceNumber, newGame) {
+function checkAnswer(choiceNumber, newGame, mySound) {
   if (document.getElementById("ans" + choiceNumber).checked) {
     newGame.score();
+    mySound.playCorrectAnswer();
     console.log("this is total score " + newGame.rightAnswer);
     console.log("success");
   } else {
@@ -36,33 +39,44 @@ function checkAnswer(choiceNumber, newGame) {
   }
 }
 
-function generateMovieQuote() {
-  $('#question').show();
-  const randomAnswerIndex = Math.floor(Math.random() * 4) + 1;
-  console.log(randomAnswerIndex);
+function generateMovieQuote(randomAnswerIndex) {
+  $("#question").show();
   for (let i = 1; i < 5; i++) {
-    MovieQuoteService.getMovieQuote()
-      .then(function (response) {
-        if (i === randomAnswerIndex) {
-          $('#quoteText').html(`<span class="quote-question">Who is talking in the quote?</span> <span class="quote-text">"${response.quote}"</span>`);
-        }
-        $('#choice' + i + ' > label').text(`${response.role} from "${response.show}"`);
-      });
+    MovieQuoteService.getMovieQuote().then(function (response) {
+      if (i === randomAnswerIndex) {
+        $("#quoteText").html(
+          `<span class="card-body">
+          <h1 class="card-title">Who is talking in the quote?</h1></span><span class="card-text"><h2>"${response.quote}"</h2></span>`
+        );
+      }
+      $("#choice" + i + " > label").html(
+        `<h3>${response.role} from "${response.show}"</h3>`
+      );
+    });
   }
 }
 
 $(document).ready(function () {
   let answerID = 0;
-  $('#randomQuote').click(function () {
-    $('#submitRandomAnswer').show();
-    $('#submitMovieAnswer').hide();
-    $('#randomQuote').hide();
-    $('#movieQuote').hide();
+  $("#randomQuote").click(function () {
+    $("#submitRandomAnswer").show();
+    $("#submitMovieAnswer").hide();
+    $("#randomQuote").hide();
+    $("#movieQuote").hide();
     let newGame = new Game("", "");
+
     answerID = answerIndex();
     generateRandomQuote(newGame, answerID);
-    $('#submitRandomAnswer').click(function () {
-      checkAnswer(answerID, newGame);
+    $("#submitRandomAnswer").click(function () {
+      let mySound = new Sounds(
+        "../assets/img/sounds/Correct-sound-effect(1).mp3"
+      );
+      checkAnswer(answerID, newGame, mySound);
+      $(".progress").html(`<div class="progress-bar" role="progressbar" 
+      style="width: ${
+        (newGame.turnCount / 5) * 100
+      }%;" aria-valuenow="${newGame.turnCount}" aria-valuemin="0" aria-valuemax="5"></div>
+    `);
       answerID = answerIndex();
       if (newGame.turnCount < 5) {
         newGame.turnCount += 1;
@@ -70,23 +84,40 @@ $(document).ready(function () {
       } else {
         $(".question").hide();
         $(".displayScore").show();
-        $('.displayScore').text(`Your score is: ${newGame.rightAnswer}`);
+        $(".displayScore").text(`Your score is: ${newGame.rightAnswer}`);
       }
     });
+  });
 
+  $("#movieQuote").click(function () {
+    console.log("movie quote click function");
+    $("#submitMovieAnswer").show();
+    $("#submitRandomAnswer").hide();
+    $("#randomQuote").hide();
+    $("#movieQuote").hide();
+    let newGame = new Game("", "");
+    answerID = answerIndex();
+    generateMovieQuote(answerID);
 
-    $('#movieQuote').click(function () {
-      $('#submitMovieAnswer').show();
-      $('#submitRandomAnswer').hide();
-      $('#randomQuote').hide();
-      $('#movieQuote').hide();
-      generateMovieQuote();
-    });
-
-    $('#submitMovieAnswer').click(function () {
-      generateMovieQuote();
+    $("#submitMovieAnswer").click(function () {
+      let mySound = new Sounds(
+        "../assets/img/sounds/Correct-sound-effect(1).mp3"
+      );
+      checkAnswer(answerID, newGame, mySound);
+      $(".progress").html(`<div class="progress-bar" role="progressbar" 
+      style="width: ${
+        (newGame.turnCount / 5) * 100
+      }%;" aria-valuenow="${newGame.turnCount}" aria-valuemin="0" aria-valuemax="5"></div>
+    `);
+      answerID = answerIndex();
+      if (newGame.turnCount < 5) {
+        newGame.turnCount += 1;
+        generateMovieQuote(answerID);
+      } else {
+        $(".question").hide();
+        $(".displayScore").show();
+        $(".displayScore").text(`Your score is: ${newGame.rightAnswer}`);
+      }
     });
   });
 });
-
-

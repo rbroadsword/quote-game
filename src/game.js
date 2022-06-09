@@ -4,7 +4,7 @@ export default class Game {
     this.answer = answer;
     this.randomAnswerIndex = 0;
     this.rightAnswer = 0;
-    this.turnCount = 0;
+    this.turnCount = 1;
     this.correctAnswers = {}; // key-value pair storage, key - question text, value - correct answer
   }
 
@@ -15,7 +15,7 @@ export default class Game {
 
   topPlayers() {
     if (this.totalPoints > this.leaderboard.first) {
-      // TODO: 
+      // TODO:
     }
   }
 }

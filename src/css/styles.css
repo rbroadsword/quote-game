@@ -1,5 +1,7 @@
-#randomQuote, #movieQuote, .submit  {
-  margin-top: 50px;
+#randomQuote,
+#movieQuote,
+.submit {
+  margin-top: 30px;
   width: fit-content;
   height: auto;
   border-radius: 12px;
@@ -10,7 +12,7 @@
   font-size: 4rem;
 }
 .submit {
-  margin-bottom: 4rem;
+  margin-bottom: 1rem;
 }
 
 #movieQuote:hover {
@@ -49,7 +51,7 @@ h1 {
   color: white;
   text-align: center;
   display: none;
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 input {
@@ -60,52 +62,45 @@ input {
   display: none;
 }
 .container {
-  text-align: center; 
+  text-align: center;
   padding: 50px;
   margin: auto;
 }
 
 .quote-question {
   font-size: large;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: white;
 }
 
 .quote-text {
   font-size: x-large;
   color: wheat;
+  font-family: Vivaldi;
 }
 
 .questionBlock {
   background-color: midnightblue;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
   opacity: 75%;
-  width: 40rem; 
-  height: 10rem;
-  display: flex; 
-  margin-bottom: 3rem; 
+  width: 40rem;
+  height: fit-content;
+  display: flex;
+  margin-bottom: 3rem;
+  padding-bottom: 1rem;
 }
 .border {
   border: 0.2rem solid #fff;
   border-radius: 2rem;
   padding: 0.4em;
-  box-shadow: 0 0 .2rem #fff,
-              0 0 .2rem #fff,
-              0 0 2rem  #AAF0D1,
-              0 0 0.8rem #AAF0D1,
-              0 0 2.8rem #AAF0D1,
-              inset 0 0 1.3rem #AAF0D1;
+  box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #aaf0d1,
+    0 0 0.8rem #aaf0d1, 0 0 2.8rem #aaf0d1, inset 0 0 1.3rem #aaf0d1;
 }
 
 .neonText {
   color: #fff;
-  text-shadow:
-    0 0 21px #fff,
-    0 0 42px #AAF0D1,
-    0 0 82px #AAF0D1,
-    0 0 92px #AAF0D1,
-    0 0 102px #AAF0D1,
-    0 0 120px #AAF0D1;
+  text-shadow: 0 0 21px #fff, 0 0 42px #aaf0d1, 0 0 82px #aaf0d1,
+    0 0 92px #aaf0d1, 0 0 102px #aaf0d1, 0 0 120px #aaf0d1;
 }
 
 .quote {
@@ -115,4 +110,20 @@ input {
 
 label {
   font-size: 1.5rem;
+}
+
+/* .quote-question {
+  font-size: large;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+}
+
+.card-text {
+  font-family: Vivaldi;
+  font-weight: 400;
+  font-size: 3.5em;
+  color: wheat;
+} */
+.progress-bar {
+  background-color: indigo;
 }

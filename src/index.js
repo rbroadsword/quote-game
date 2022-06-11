@@ -120,4 +120,9 @@ $(document).ready(function () {
       }
     });
   });
+
+  $('#newGame').click(function() {
+    this.rightAnswer = 0;
+    location.reload(true);
+  });
 });

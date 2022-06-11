@@ -32,7 +32,7 @@
 
 body {
   margin: auto;
-  background-image: url(https://img.freepik.com/free-vector/colorful-futuristic-background-with-shiny-particles_52683-42650.jpg?w=1380&t=st=1654457888~exp=1654458488~hmac=8d03e80a398750d738211acfcf6511188c27f4722348bba63b39ecdc83961cc7);
+  background: url('../assets/img/gameBackground.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100% 100%;
@@ -126,4 +126,9 @@ label {
 } */
 .progress-bar {
   background-color: indigo;
+}
+
+#footer {
+  position: relative;
+  margin-top: 30%;
 }

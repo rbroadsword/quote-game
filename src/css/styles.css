@@ -128,6 +128,10 @@ label {
   background-color: indigo;
 }
 
+#newGame {
+  display: none;
+}
+
 #footer {
   position: relative;
   margin-top: 30%;

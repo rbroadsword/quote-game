@@ -85,6 +85,7 @@ $(document).ready(function () {
         $(".question").hide();
         $(".displayScore").show();
         $(".displayScore").text(`Your score is: ${newGame.rightAnswer}`);
+        $('#newGame').show();
       }
     });
   });
@@ -117,6 +118,7 @@ $(document).ready(function () {
         $(".question").hide();
         $(".displayScore").show();
         $(".displayScore").text(`Your score is: ${newGame.rightAnswer}`);
+        $('#newGame').show();
       }
     });
   });
@@ -124,5 +126,5 @@ $(document).ready(function () {
   $('#newGame').click(function() {
     this.rightAnswer = 0;
     location.reload(true);
-  });
+  })
 });

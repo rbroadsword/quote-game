@@ -20,10 +20,11 @@ function generateRandomQuote(newGame, randomAnswerIndex) {
     QuoteService.getQuote().then(function (response) {
       if (i === randomAnswerIndex) {
         $("#quoteText").html(
-          `<span class="quote-question">Who is talking in the quote?</span><span class="quote-text">"${response.content}"</span>`
+          `<span class="card-body">
+          <h1 class="card-title">Who is talking in the quote?</h1></span><span class="card-text"><h2>"${response.quote}"</h2></span>`
         );
       }
-      $("#choice" + i + " > label").text(response.author);
+      $("#choice" + i + " > label").text(response.role);
     });
   }
 }

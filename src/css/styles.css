@@ -113,6 +113,21 @@ label {
   font-size: 1.5rem;
 }
 
+.results {
+  display: none; 
+}
+.movieLeaderBoard {
+  color: white; 
+  font-size: 1.5rem;
+  margin: 3rem;
+  background-color: midnightblue;
+  border-radius: 0.25rem;
+  opacity: 75%;
+  width: fit-content;
+  height: fit-content;
+  padding: 2rem;
+}
+
 /* .quote-question {
   font-size: large;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;

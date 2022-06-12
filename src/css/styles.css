@@ -30,7 +30,7 @@
 
 body {
   margin: auto;
-  background-image: url(https://img.freepik.com/free-vector/colorful-futuristic-background-with-shiny-particles_52683-42650.jpg?w=1380&t=st=1654457888~exp=1654458488~hmac=8d03e80a398750d738211acfcf6511188c27f4722348bba63b39ecdc83961cc7);
+  background-image: url('../assets/img/gameBackground.jpeg');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100% 100%;
@@ -59,6 +59,19 @@ input {
 #submitAnswer {
   display: none;
 }
+
+.correctAnswer {
+  background-color: #04a704;
+  color: whitesmoke;
+  border-radius: 0.25rem;
+} 
+
+.incorrectAnswer {
+  background-color: red;
+  color: whitesmoke;
+  border-radius: 0.25rem;
+}
+
 .name {
   text-align: center; 
   padding: 30px;
@@ -117,6 +130,20 @@ label {
   display: none; 
 }
 .movieLeaderBoard {
+  display: none;
+  color: white; 
+  font-size: 1.5rem;
+  margin: 3rem;
+  background-color: midnightblue;
+  border-radius: 0.25rem;
+  opacity: 75%;
+  width: fit-content;
+  height: fit-content;
+  padding: 2rem;
+}
+
+randomLeaderBoard {
+  display: none;
   color: white; 
   font-size: 1.5rem;
   margin: 3rem;
@@ -142,4 +169,8 @@ label {
 } */
 .progress-bar {
   background-color: indigo;
+}
+
+#newGame {
+  display: none;
 }

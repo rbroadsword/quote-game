@@ -24,11 +24,8 @@
       <input type="radio" value="choice1" name="answers" id="ans1" checked>
       <label for="ans1"></label>
     </div>
-    <div>
-      <h1 class="displayScore"></h1>
-    </div>
     <div id="choice2">
-      <input type="radio" value="choice3" name="answers" id="ans2">
+      <input type="radio" value="choice2" name="answers" id="ans2">
       <label for="ans2"></label>
     </div>
     <div id="choice3">
@@ -58,10 +55,21 @@
         <li id="movieThird"></li>
       </ol>
     </div>
+    <div class="randomLeaderBoard border">
+      <h3>Top Scores:</h3>
+      <ol>
+        <li id="randomFirst"></li>
+        <li id="randomSecond"></li>
+        <li id="randomThird"></li>
+      </ol>
+    </div>
+    <div class="userName">
+      <label for="userName">Enter your name</label>
+      <input type="text">
+      <button class="btn-success btn-lg">Submit</button>
+    </div>
   </div>
-  <audio id="encore">
-    <source src="../src/assets/img/sounds/encore.wav" type="audio/mpeg">
-  </audio>
+  <button class="submit btn-lg" id="newGame">New Game</button>
 </body>
 
 </html>

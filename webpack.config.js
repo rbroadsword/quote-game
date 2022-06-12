@@ -15,7 +15,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: 'quote-game',      // 
+      title: 'quote-game',
       template: './src/index.html',
       inject: 'body'
     })
@@ -23,7 +23,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(gif|png|jpe|mp3?g)$/,
+        test: /\.(gif|png|jpe?g|mp3)$/,
         use: [
           {
             loader: 'file-loader',

@@ -1,6 +1,4 @@
-#randomQuote,
-#movieQuote,
-.submit {
+#randomQuote, #movieQuote, .submit  {
   margin-top: 30px;
   width: fit-content;
   height: auto;
@@ -51,7 +49,7 @@ h1 {
   color: white;
   text-align: center;
   display: none;
-  margin-top: 50px;
+  margin-top: 1px;
 }
 
 input {
@@ -61,9 +59,9 @@ input {
 #submitAnswer {
   display: none;
 }
-.container {
-  text-align: center;
-  padding: 50px;
+.name {
+  text-align: center; 
+  padding: 30px;
   margin: auto;
 }
 
@@ -73,10 +71,13 @@ input {
   color: white;
 }
 
-.quote-text {
-  font-size: x-large;
+.card-text {
+  font-family:Vivaldi;
+  font-weight: 400;
+  font-size: 3.5em;
   color: wheat;
   font-family: Vivaldi;
+  margin:0%;
 }
 
 .questionBlock {

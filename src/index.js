@@ -24,8 +24,12 @@ function generateRandomQuote(newGame, randomAnswerIndex) {
           `<span class="card-body">
           <h1 class="card-title">Who is talking in the quote?</h1></span><span class="card-text"><h2>"${response.content}"</h2></span>`
         );
-      }
+        $("#choice" + i + " > label").text(response.author);
+        $("#choice" + i + " > label").addClass('correct');
+      } else {
       $("#choice" + i + " > label").text(response.author);
+      $("#choice" + i + " > label").addClass('incorrect'); 
+      }
     });
   }
 }
@@ -41,23 +45,21 @@ function playWrongAnswerSound() {
 }
 
 function checkAnswer(choiceNumber, newGame) {
-  // highlight correct answer green
   if (document.getElementById("ans" + choiceNumber).checked) {
     newGame.score();
     playCorrectAnswerSound();
-    //$("input[type=radio][name=answers]:checked").addClass("correctAnswer");
-    //let a = document.getElementById("ans" + choiceNumber);
-    //a.classList.add("correctAnswer");
-    $('label').removeClass();
-    $('label').addClass("correctAnswer"); 
+    $('.correct').removeClass('.incorrect');
+    $(".correct").addClass("correctAnswer"); 
+    $('.incorrect').addClass("incorrectAnswer");
     console.log("success");
   } else {
     playWrongAnswerSound();
-    // highlight answer the user selected in red
+    $('.correct').removeClass('.incorrect');
+    $(".correct").addClass("correctAnswer"); 
+    $('.incorrect').addClass("incorrectAnswer"); 
     console.log("fail");
   }
 }
-//class = "correctAnswer" or class = "incorrectAnswer" (lines 63 and 68 in styles.css)
 
 function generateMovieQuote(randomAnswerIndex) {
   $("#question").show();
@@ -70,10 +72,15 @@ function generateMovieQuote(randomAnswerIndex) {
           `<span class="card-body">
           <h1 class="card-title">Who is talking in the quote?</h1></span><span class="card-text"><h2>"${response.quote}"</h2></span>`
         );
-      }
+        $("#choice" + i + " > label").html(
+          `<h3>${response.role} from "${response.show}"</h3>`
+        );
+        $("#choice" + i + " > label").addClass('correct');
+      } else {
       $("#choice" + i + " > label").html(
-        `<h3>${response.role} from "${response.show}"</h3>`
-      );
+        `<h3>${response.role} from "${response.show}"</h3>`);
+        $("#choice" + i + " > label").addClass('incorrect'); 
+      }
     });
   }
 }
@@ -96,20 +103,25 @@ $(document).ready(function () {
       answerID = answerIndex();
       if (newGame.turnCount < 5) {
         newGame.turnCount += 1;
-        //highlight correct answer here
         setTimeout(() => {
+          $(".incorrect").removeClass("incorrectAnswer"); 
+          $(".correct").removeClass("correctAnswer");
+          $("label").removeClass("correct incorrect");
+          console.log(document.getElementById("question")); 
           generateRandomQuote(newGame, answerID);
         }, "5000");
       } else {
-        //highlight correct answer here
+        setTimeout(() => {
         $(".question").hide();
-        $(".displayScore").show();
+        $(".results").show();
         $(".displayScore").text(`Your score is: ${newGame.rightAnswer}`);
         $('.randomLeaderBoard').show(); 
         $('#newGame').show();
         $("#randomFirst").text(`Name: ${newGame.randomRanking1.name}  Score: ${newGame.randomRanking1.score}`);
         $("#randomSecond").text(`Name: ${newGame.randomRanking2.name}  Score: ${newGame.randomRanking2.score}`);
         $("#randomThird").text(`Name: ${newGame.randomRanking3.name}  Score: ${newGame.randomRanking3.score}`);
+        }, "5000");
+        
       }
     });
   });

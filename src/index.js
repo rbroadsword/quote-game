@@ -3,10 +3,10 @@ import $ from "jquery";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/styles.css";
+// import "./assets/sounds/Correct-sound-effect (1).mp3";
 import QuoteService from "./js/quote-service.js";
 import MovieQuoteService from "./js/moviequote-service";
 import Game from "./game.js";
-import Sounds from "./js/sounds.js";
 
 function answerIndex() {
   const randomAnswerIndex = Math.floor(Math.random() * 4) + 1;
@@ -29,10 +29,15 @@ function generateRandomQuote(newGame, randomAnswerIndex) {
   }
 }
 
-function checkAnswer(choiceNumber, newGame, mySound) {
+function playCorrectAnswerSound() {
+  let mySound = new Audio("./assets/img/Correct-sound-effect (1).mp3");
+  mySound.play();
+}
+
+function checkAnswer(choiceNumber, newGame) {
   if (document.getElementById("ans" + choiceNumber).checked) {
     newGame.score();
-    mySound.playCorrectAnswer();
+    playCorrectAnswerSound();
     console.log("this is total score " + newGame.rightAnswer);
     console.log("success");
   } else {
@@ -65,17 +70,12 @@ $(document).ready(function () {
     $("#randomQuote").hide();
     $("#movieQuote").hide();
     let newGame = new Game("", "");
-
     answerID = answerIndex();
     generateRandomQuote(newGame, answerID);
     $("#submitRandomAnswer").click(function () {
-      let mySound = new Sounds(
-        "../assets/img/sounds/Correct-sound-effect(1).mp3"
-      );
-      checkAnswer(answerID, newGame, mySound);
+      checkAnswer(answerID, newGame);
       $(".progress").html(`<div class="progress-bar" role="progressbar" 
-      style="width: ${(newGame.turnCount / 5) * 100
-        }%;" aria-valuenow="${newGame.turnCount}" aria-valuemin="0" aria-valuemax="5"></div>
+      style="width: ${(newGame.turnCount / 5) * 100}%;" aria-valuenow="${newGame.turnCount}" aria-valuemin="0" aria-valuemax="5"></div>
     `);
       answerID = answerIndex();
       if (newGame.turnCount < 5) {
@@ -95,27 +95,27 @@ $(document).ready(function () {
     $("#submitRandomAnswer").hide();
     $("#randomQuote").hide();
     $("#movieQuote").hide();
+    $('audio#encore')[0].play();
     let newGame = new Game("", "");
     answerID = answerIndex();
     generateMovieQuote(answerID);
 
     $("#submitMovieAnswer").click(function () {
-      let mySound = new Sounds(
-        "../assets/img/sounds/Correct-sound-effect(1).mp3"
-      );
-      checkAnswer(answerID, newGame, mySound);
+      checkAnswer(answerID, newGame);
       $(".progress").html(`<div class="progress-bar" role="progressbar" 
-      style="width: ${(newGame.turnCount / 5) * 100
-        }%;" aria-valuenow="${newGame.turnCount}" aria-valuemin="0" aria-valuemax="5"></div>
-    `);
+      style="width: ${(newGame.turnCount / 5) * 100}%;" aria-valuenow="${newGame.turnCount}" aria-valuemin="0" aria-valuemax="5"></div>`);
       answerID = answerIndex();
       if (newGame.turnCount < 5) {
         newGame.turnCount += 1;
         generateMovieQuote(answerID);
       } else {
         $(".question").hide();
-        $(".displayScore").show();
+        $(".results").show();
         $(".displayScore").text(`Your score is: ${newGame.rightAnswer}`);
+        //run topMoviePlayers() here? 
+        $("#movieFirst").text(`Name: ${newGame.movieRanking1.name}  Score: ${newGame.movieRanking1.score}`);
+        $("#movieSecond").text(`Name: ${newGame.movieRanking2.name}  Score: ${newGame.movieRanking2.score}`);
+        $("#movieThird").text(`Name: ${newGame.movieRanking3.name}  Score: ${newGame.movieRanking3.score}`);
       }
     });
   });

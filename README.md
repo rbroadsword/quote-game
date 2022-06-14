@@ -1,6 +1,6 @@
 # Quotes game
 
-#### By: Ryan Broadsword, Nick Tse, Louie Knolle, Viktoriia Zubarieva
+#### By: Ryan Broadsword, Nick Tse, Louie Knolle, Viktoria Zubarieva
 
 ## Description
 
@@ -35,4 +35,4 @@ This project is a quiz which called a "Quote game". A user can choose two diffre
 
 ## License
 
-Copyright (c) _June_ _Ryan Broadsword, Nick Tse, Louie Knolle, Viktoriia Zubarieva_
+Copyright (c) _June 2022_ _Ryan Broadsword, Nick Tse, Louie Knolle, Viktoria Zubarieva_

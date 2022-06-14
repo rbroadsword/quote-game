@@ -9,6 +9,7 @@ import "./assets/sounds/encore.mp3";
 import QuoteService from "./js/quote-service.js";
 import MovieQuoteService from "./js/moviequote-service";
 import Game from "./game.js";
+import ConfettiGenerator from "confetti-js"; 
 
 function answerIndex() {
   const randomAnswerIndex = Math.floor(Math.random() * 4) + 1;
@@ -122,6 +123,9 @@ $(document).ready(function () {
           setTimeout(() => {
             newGame.topRandomPlayers();
             playEncore(); 
+            let confettiSettings = { target: 'my-canvas' };
+            let confetti = new ConfettiGenerator(confettiSettings);
+            confetti.render();
             $(".question").hide();
             $(".results").show();
             $(".displayScore").text(`${newGame.player.name} score is: ${newGame.rightAnswer}`);
@@ -160,6 +164,9 @@ $(document).ready(function () {
           setTimeout(() => {
             newGame.topMoviePlayers(); 
             playEncore();
+            let confettiSettings = { target: 'my-canvas' };
+            let confetti = new ConfettiGenerator(confettiSettings);
+            confetti.render();
             $(".question").hide();
             $(".results").show();
             $(".displayScore").text(`${newGame.player.name} score is: ${newGame.rightAnswer}`);

@@ -158,32 +158,35 @@ label {
 }
 
 .results {
-  display: none; 
+  display: none;
+  width: 100%;  
 }
 .movieLeaderBoard {
   display: none;
   color: white; 
   font-size: 1.5rem;
-  margin: 3rem;
+  margin: auto;
   background-color: midnightblue;
   border-radius: 0.25rem;
   opacity: 75%;
   width: fit-content;
   height: fit-content;
   padding: 2rem;
+  z-index: 1; 
 }
 
 .randomLeaderBoard {
   display: none;
   color: white; 
   font-size: 1.5rem;
-  margin: 3rem;
+  margin: auto;
   background-color: midnightblue;
   border-radius: 0.25rem;
   opacity: 75%;
   width: fit-content;
   height: fit-content;
   padding: 2rem;
+  z-index: 1; 
 }
 
 /* .quote-question {
@@ -204,4 +207,11 @@ label {
 
 #newGame {
   display: none;
+}
+
+#my-canvas {
+  object-fit: cover; 
+  position: fixed;
+  width: 100%;  
+  z-index: -1; 
 }

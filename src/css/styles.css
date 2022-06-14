@@ -1,4 +1,10 @@
-#randomQuote, #movieQuote, .submit  {
+.card-title, .card-text {
+  height: fit-content;
+  width: auto;
+  margin-bottom: -4rem;
+}
+
+#randomQuote, #movieQuote, .submit, #nameBtn  {
   margin-top: 30px;
   width: fit-content;
   height: auto;
@@ -6,8 +12,22 @@
   transition-duration: 0.4s;
   padding: 10px 20px;
 }
+#nameBtn {
+  display: block; 
+  margin: auto; 
+}
+#randomQuote, #movieQuote {
+  display: none;
+  align-self: center; 
+}
+#name {
+  color: white;
+  margin-top: 2rem;
+}
+
 .title {
   font-size: 4rem;
+  margin-top: 2rem;
 }
 .submit {
   margin-bottom: 1rem;
@@ -19,6 +39,10 @@
 }
 
 #randomQuote:hover {
+  background-color: indigo;
+  color: white;
+}
+#nameBtn:hover {
   background-color: indigo;
   color: white;
 }
@@ -45,6 +69,11 @@ h1 {
   text-align: center;
 }
 
+h3 {
+  color: white;
+  text-align: center;
+}
+
 .question {
   color: white;
   text-align: center;
@@ -64,12 +93,14 @@ input {
   background-color: #04a704;
   color: whitesmoke;
   border-radius: 0.25rem;
+  opacity: 75%;
 } 
 
 .incorrectAnswer {
   background-color: red;
   color: whitesmoke;
   border-radius: 0.25rem;
+  opacity: 50%;
 }
 
 .name {
@@ -142,7 +173,7 @@ label {
   padding: 2rem;
 }
 
-randomLeaderBoard {
+.randomLeaderBoard {
   display: none;
   color: white; 
   font-size: 1.5rem;

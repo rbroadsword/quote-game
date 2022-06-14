@@ -12,9 +12,20 @@
   <div class="container">
     <h1 class="neonText title">Quotes Game</h1>
   </div>
-
-  <button type="click" id="randomQuote" class="btn-lg">Random quotes</button>
-  <button type="click" id="movieQuote" class="btn-lg">Movie quotes</button>
+  <div class="intro">
+    <h3>Welcome to the Quote Game! You'll be asked a series of multiple choice questions and your score will be displayed at the end. Click on one of the game modes below to begin!</h3>
+  </div>
+  <form id="nameForm">
+    <div class="form-group"> 
+      <label for="userName" id="name">Enter your name</label>
+      <input type="text" class="userName" required>
+    </div>
+    <button type="click" id="nameBtn" class="btn-lg">Submit</button>
+  </form> 
+  <div class="gameBtns">
+    <button type="click" id="randomQuote" class="btn-lg">Random quotes</button>
+    <button type="click" id="movieQuote" class="btn-lg">Movie quotes</button>
+  </div>
   <br>
   <div class="question" id="question">
     <div class="questionBlock border">
@@ -62,11 +73,6 @@
         <li id="randomSecond"></li>
         <li id="randomThird"></li>
       </ol>
-    </div>
-    <div class="userName">
-      <label for="userName">Enter your name</label>
-      <input type="text">
-      <button class="btn-success btn-lg">Submit</button>
     </div>
   </div>
   <button class="submit btn-lg" id="newGame">New Game</button>

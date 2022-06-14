@@ -27,8 +27,8 @@ function generateRandomQuote(newGame, randomAnswerIndex) {
         $("#choice" + i + " > label").text(response.author);
         $("#choice" + i + " > label").addClass('correct');
       } else {
-      $("#choice" + i + " > label").text(response.author);
-      $("#choice" + i + " > label").addClass('incorrect'); 
+        $("#choice" + i + " > label").text(response.author);
+        $("#choice" + i + " > label").addClass('incorrect');
       }
     });
   }
@@ -49,14 +49,14 @@ function checkAnswer(choiceNumber, newGame) {
     newGame.score();
     playCorrectAnswerSound();
     $('.correct').removeClass('.incorrect');
-    $(".correct").addClass("correctAnswer"); 
+    $(".correct").addClass("correctAnswer");
     $('.incorrect').addClass("incorrectAnswer");
     console.log("success");
   } else {
     playWrongAnswerSound();
     $('.correct').removeClass('.incorrect');
-    $(".correct").addClass("correctAnswer"); 
-    $('.incorrect').addClass("incorrectAnswer"); 
+    $(".correct").addClass("correctAnswer");
+    $('.incorrect').addClass("incorrectAnswer");
     console.log("fail");
   }
 }
@@ -66,8 +66,8 @@ function generateMovieQuote(randomAnswerIndex) {
   for (let i = 1; i < 5; i++) {
     MovieQuoteService.getMovieQuote().then(function (response) {
       if (i === randomAnswerIndex) {
-        let quote = response.quote; 
-        console.log(quote); 
+        let quote = response.quote;
+        console.log(quote);
         $("#quoteText").html(
           `<span class="card-body">
           <h1 class="card-title">Who is talking in the quote?</h1></span><span class="card-text"><h2>"${response.quote}"</h2></span>`
@@ -77,9 +77,9 @@ function generateMovieQuote(randomAnswerIndex) {
         );
         $("#choice" + i + " > label").addClass('correct');
       } else {
-      $("#choice" + i + " > label").html(
-        `<h3>${response.role} from "${response.show}"</h3>`);
-        $("#choice" + i + " > label").addClass('incorrect'); 
+        $("#choice" + i + " > label").html(
+          `<h3>${response.role} from "${response.show}"</h3>`);
+        $("#choice" + i + " > label").addClass('incorrect');
       }
     });
   }
@@ -104,24 +104,24 @@ $(document).ready(function () {
       if (newGame.turnCount < 5) {
         newGame.turnCount += 1;
         setTimeout(() => {
-          $(".incorrect").removeClass("incorrectAnswer"); 
+          $(".incorrect").removeClass("incorrectAnswer");
           $(".correct").removeClass("correctAnswer");
           $("label").removeClass("correct incorrect");
-          console.log(document.getElementById("question")); 
+          console.log(document.getElementById("question"));
           generateRandomQuote(newGame, answerID);
         }, "5000");
       } else {
         setTimeout(() => {
-        $(".question").hide();
-        $(".results").show();
-        $(".displayScore").text(`Your score is: ${newGame.rightAnswer}`);
-        $('.randomLeaderBoard').show(); 
-        $('#newGame').show();
-        $("#randomFirst").text(`Name: ${newGame.randomRanking1.name}  Score: ${newGame.randomRanking1.score}`);
-        $("#randomSecond").text(`Name: ${newGame.randomRanking2.name}  Score: ${newGame.randomRanking2.score}`);
-        $("#randomThird").text(`Name: ${newGame.randomRanking3.name}  Score: ${newGame.randomRanking3.score}`);
+          $(".question").hide();
+          $(".results").show();
+          $(".displayScore").text(`Your score is: ${newGame.rightAnswer}`);
+          $('.randomLeaderBoard').show();
+          $('#newGame').show();
+          $("#randomFirst").text(`Name: ${newGame.randomRanking1.name}  Score: ${newGame.randomRanking1.score}`);
+          $("#randomSecond").text(`Name: ${newGame.randomRanking2.name}  Score: ${newGame.randomRanking2.score}`);
+          $("#randomThird").text(`Name: ${newGame.randomRanking3.name}  Score: ${newGame.randomRanking3.score}`);
         }, "5000");
-        
+
       }
     });
   });
@@ -132,11 +132,7 @@ $(document).ready(function () {
     $("#submitRandomAnswer").hide();
     $("#randomQuote").hide();
     $("#movieQuote").hide();
-<<<<<<< HEAD
-    $('audio#encore')[0].play();
-=======
     //$('audio#encore')[0].play(); 
->>>>>>> 772f047ae038acf4169a7b69f9609d51a294675e
     let newGame = new Game("", "");
     answerID = answerIndex();
     generateMovieQuote(answerID);
@@ -153,7 +149,7 @@ $(document).ready(function () {
         $(".question").hide();
         $(".results").show();
         $(".displayScore").text(`Your score is: ${newGame.rightAnswer}`);
-        $(".movieLeaderBoard").show(); 
+        $(".movieLeaderBoard").show();
         $('#newGame').show();
         //run topMoviePlayers() here? 
         $("#movieFirst").text(`Name: ${newGame.movieRanking1.name}  Score: ${newGame.movieRanking1.score}`);
@@ -162,7 +158,7 @@ $(document).ready(function () {
       }
     });
   });
-  $('#newGame').click(function() {
+  $('#newGame').click(function () {
     this.rightAnswer = 0;
     this.turnCount = 1;
     location.reload(true);

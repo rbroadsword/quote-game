@@ -39,16 +39,19 @@ function generateRandomQuote(newGame, randomAnswerIndex) {
 function playCorrectAnswerSound() {
   let mySound = new Audio("./assets/img/Correct-sound-effect (1).mp3");
   mySound.play();
+  mySound.volume = 0.1;
 }
 
 function playWrongAnswerSound() {
   let mySound = new Audio("./assets/img/wrongAnswer.mp3");
   mySound.play();
+  mySound.volume = 0.1;
 }
 
 function playEncore() {
   let mySound = new Audio("./assets/img/encore.mp3"); 
-  mySound.play(); 
+  mySound.play();
+  mySound.volume = 0.1; 
 }
 
 function checkAnswer(choiceNumber, newGame) {

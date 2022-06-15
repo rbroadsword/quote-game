@@ -128,7 +128,7 @@ $(document).ready(function () {
             confetti.render();
             $(".question").hide();
             $(".results").show();
-            $(".displayScore").text(`${newGame.player.name} score is: ${newGame.rightAnswer}`);
+            $(".displayScore").text(`${newGame.player.name} your score is: ${newGame.rightAnswer}`);
             $('.randomLeaderBoard').show(); 
             $('#newGame').show();
             $("#randomFirst").text(`Name: ${newGame.randomRanking1.name}  Score: ${newGame.randomRanking1.score}`);
@@ -169,7 +169,7 @@ $(document).ready(function () {
             confetti.render();
             $(".question").hide();
             $(".results").show();
-            $(".displayScore").text(`${newGame.player.name} score is: ${newGame.rightAnswer}`);
+            $(".displayScore").text(`${newGame.player.name} your score is: ${newGame.rightAnswer}`);
             $(".movieLeaderBoard").show(); 
             $('#newGame').show(); 
             $("#movieFirst").text(`Name: ${newGame.movieRanking1.name}  Score: ${newGame.movieRanking1.score}`);

@@ -19,6 +19,8 @@
 #randomQuote, #movieQuote {
   display: none;
   align-self: center; 
+  margin: auto;
+  margin-top: 1rem; 
 }
 #name {
   color: white;

@@ -13,7 +13,6 @@ import ConfettiGenerator from "confetti-js";
 
 function answerIndex() {
   const randomAnswerIndex = Math.floor(Math.random() * 4) + 1;
-  console.log("this is the right answer: " + randomAnswerIndex);
   return randomAnswerIndex;
 }
 
